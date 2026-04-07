@@ -1,29 +1,13 @@
-import { useEffect, useState } from 'react'
-
-const details = [
-  {
-    label: 'Plats',
-    value: 'Smörsoppsvägen 19',
-  },
-  {
-    label: 'Tid',
-    value: '10:00-12:00',
-  },
-  {
-    label: 'Bjuds på',
-    value: 'Pannkaka och fika',
-  },
-  {
-    label: 'Tema',
-    value: 'Minecraft, kalas och fullt med blockig energi',
-  },
-]
+import { useEffect, useState } from "react";
+import creeperAudio from "./assets/creeper.mp3";
+import johnImage from "./assets/john-1.jpg";
 
 const activities = [
-  'Pannkakor vid craftingbordet',
-  'Fika efter dagens äventyr',
-  'Kalasstämning med Minecraft-känsla',
-]
+  "Ladda upp med pannkakor",
+  "Boosta med fika",
+  "Crafta utrustning",
+  "Dräp gasten",
+];
 
 const mobConfigs = {
   chicken: {
@@ -41,23 +25,23 @@ const mobConfigs = {
     delay: 4400,
     topRange: [18, 68],
   },
-}
+};
 
 const creeperSequenceTimings = {
-  entering: 4400,
-  loading: 2000,
+  entering: 2500,
+  loading: 2600,
   exploding: 1300,
-}
+};
 
 function getRandomPercentage([min, max]) {
-  return `${Math.round(min + Math.random() * (max - min))}%`
+  return `${Math.round(min + Math.random() * (max - min))}%`;
 }
 
 function createMobPlacement(config) {
   return {
-    side: Math.random() < 0.5 ? 'left' : 'right',
+    side: Math.random() < 0.5 ? "left" : "right",
     top: getRandomPercentage(config.topRange),
-  }
+  };
 }
 
 function createInitialMobPlacements() {
@@ -66,88 +50,111 @@ function createInitialMobPlacements() {
       name,
       createMobPlacement(config),
     ]),
-  )
+  );
 }
 
 function App() {
-  const [mobPlacements, setMobPlacements] = useState(createInitialMobPlacements)
-  const [leverEnabled, setLeverEnabled] = useState(false)
-  const [creeperPhase, setCreeperPhase] = useState('idle')
-  const isDetonated = creeperPhase === 'detonated'
+  const [mobPlacements, setMobPlacements] = useState(
+    createInitialMobPlacements,
+  );
+  const [leverEnabled, setLeverEnabled] = useState(false);
+  const [creeperPhase, setCreeperPhase] = useState("idle");
+  const [inviteeName, setInviteeName] = useState("John");
+  const isDetonated = creeperPhase === "detonated";
+
+  useEffect(() => {
+    const search = location.search;
+    const params = new URLSearchParams(search);
+    const name = params.get("name");
+
+    if (name) {
+      setInviteeName(name);
+      return;
+    }
+  }, []);
 
   useEffect(() => {
     if (isDetonated) {
-      return undefined
+      return undefined;
     }
 
-    const timeoutIds = []
-    const intervalIds = []
+    const timeoutIds = [];
+    const intervalIds = [];
 
     for (const [name, config] of Object.entries(mobConfigs)) {
       const timeoutId = window.setTimeout(() => {
         setMobPlacements((current) => ({
           ...current,
           [name]: createMobPlacement(config),
-        }))
+        }));
 
         const intervalId = window.setInterval(() => {
           setMobPlacements((current) => ({
             ...current,
             [name]: createMobPlacement(config),
-          }))
-        }, config.duration)
+          }));
+        }, config.duration);
 
-        intervalIds.push(intervalId)
-      }, config.delay + config.duration)
+        intervalIds.push(intervalId);
+      }, config.delay + config.duration);
 
-      timeoutIds.push(timeoutId)
+      timeoutIds.push(timeoutId);
     }
 
     return () => {
-      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId))
-      intervalIds.forEach((intervalId) => window.clearInterval(intervalId))
-    }
-  }, [isDetonated])
+      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      intervalIds.forEach((intervalId) => window.clearInterval(intervalId));
+    };
+  }, [isDetonated]);
 
   useEffect(() => {
     if (!leverEnabled) {
       setCreeperPhase((current) =>
-        current === 'detonated' ? current : 'idle',
-      )
-      return undefined
+        current === "detonated" ? current : "idle",
+      );
+      return undefined;
     }
 
-    setCreeperPhase('entering')
+    setCreeperPhase("entering");
 
     const loadingTimer = window.setTimeout(() => {
-      setCreeperPhase('loading')
-    }, creeperSequenceTimings.entering)
+      document.querySelector("#creeper-player").play();
+      setCreeperPhase("loading");
+    }, creeperSequenceTimings.entering);
 
     const explodingTimer = window.setTimeout(() => {
-      setCreeperPhase('exploding')
-    }, creeperSequenceTimings.entering + creeperSequenceTimings.loading)
+      setCreeperPhase("exploding");
+    }, creeperSequenceTimings.entering + creeperSequenceTimings.loading);
 
-    const resetTimer = window.setTimeout(() => {
-      setCreeperPhase('detonated')
-      setLeverEnabled(false)
-    }, creeperSequenceTimings.entering + creeperSequenceTimings.loading + creeperSequenceTimings.exploding)
+    const resetTimer = window.setTimeout(
+      () => {
+        setCreeperPhase("detonated");
+        setLeverEnabled(false);
+      },
+      creeperSequenceTimings.entering +
+        creeperSequenceTimings.loading +
+        creeperSequenceTimings.exploding,
+    );
 
     return () => {
-      window.clearTimeout(loadingTimer)
-      window.clearTimeout(explodingTimer)
-      window.clearTimeout(resetTimer)
-    }
-  }, [leverEnabled])
+      window.clearTimeout(loadingTimer);
+      window.clearTimeout(explodingTimer);
+      window.clearTimeout(resetTimer);
+    };
+  }, [leverEnabled]);
 
   return (
-    <div className={`page-shell creeper-phase-${creeperPhase}`}>
+    <div
+      className={`page-shell creeper-phase-${creeperPhase === "detonated" ? "exploding" : creeperPhase}`}
+    >
+      <audio id="creeper-player" src={creeperAudio} />
       <div className="sky-grid" aria-hidden="true" />
       <div className="cloud cloud-one" aria-hidden="true" />
       <div className="cloud cloud-two" aria-hidden="true" />
       <div className="mob-layer" aria-hidden="true">
         <div
           className={`mob mob-chicken mob-side-${mobPlacements.chicken.side}`}
-          style={{ '--spawn-top': mobPlacements.chicken.top }}
+          style={{ "--spawn-top": mobPlacements.chicken.top }}
         >
           <span className="mob-head" />
           <span className="mob-eye mob-eye-left" />
@@ -158,7 +165,7 @@ function App() {
 
         <div
           className={`mob mob-pig mob-side-${mobPlacements.pig.side}`}
-          style={{ '--spawn-top': mobPlacements.pig.top }}
+          style={{ "--spawn-top": mobPlacements.pig.top }}
         >
           <span className="mob-head" />
           <span className="mob-ear mob-ear-left" />
@@ -172,7 +179,7 @@ function App() {
 
         <div
           className={`mob mob-villager mob-side-${mobPlacements.villager.side}`}
-          style={{ '--spawn-top': mobPlacements.villager.top }}
+          style={{ "--spawn-top": mobPlacements.villager.top }}
         >
           <span className="mob-head" />
           <span className="mob-brow" />
@@ -182,50 +189,50 @@ function App() {
           <span className="mob-robe" />
         </div>
       </div>
+      <article
+        id="creeper"
+        className={`creeper-state-${creeperPhase}`}
+        data-creeper-phase={creeperPhase}
+        role="img"
+      >
+        <header>
+          <h1></h1>
+        </header>
+        <main>
+          <p></p>
+        </main>
+        <footer>
+          <div className="foot">
+            <p></p>
+          </div>
+          <div className="foot">
+            <p></p>
+          </div>
+          <div className="foot">
+            <p></p>
+          </div>
+          <div className="foot">
+            <p></p>
+          </div>
+        </footer>
+      </article>
       <main className="invitation-card">
         <div className="hero-row">
           <div>
             <p className="kicker">Nytt uppdrag upplåst</p>
             <p className="date-line">John fyller 6 år • 10:00-12:00</p>
-            <h1>Välkommen på Johns 6-årskalas!</h1>
+            <h1>Välkommen {inviteeName} på Johns 6-årskalas!</h1>
             <p className="lede">
               Packa pickaxen och kom till ett blockigt kalasäventyr. Det blir
               pannkaka, fika och massor av Minecraft-stämning när vi firar att
               John fyller sex.
             </p>
           </div>
-
-            <article
-              id="creeper"
-              className={`creeper-state-${creeperPhase}`}
-              data-creeper-phase={creeperPhase}
-              role="img"
-            >
-              <header>
-                <h1></h1>
-              </header>
-              <main>
-                <p></p>
-              </main>
-              <footer>
-                <div className="foot"><p></p></div>
-                <div className="foot"><p></p></div>
-                <div className="foot"><p></p></div>
-                <div className="foot"><p></p></div>
-              </footer>
-            </article>
-          
         </div>
-
-        
 
         <section className="content-grid" aria-label="Kalasinformation">
           <div className="panel panel-featured">
             <span className="panel-label">Uppdragslista</span>
-            <p>
-              Logga in i kalasvärlden för ett förmiddagspass med bus, godsaker
-              och Minecraft-känsla runt varje hörn.
-            </p>
             <ul>
               {activities.map((item) => (
                 <li key={item}>{item}</li>
@@ -236,38 +243,66 @@ function App() {
           <div className="details-grid">
             <article className="panel panel-photo-placeholder">
               <span className="panel-label">Hjälteporträtt</span>
-              <div className="photo-placeholder" role="img" aria-label="Platshållare för ett foto på det 6-åriga födelsedagsbarnet">
-                <img src='./src/assets/john-1.jpg' alt="John, det 6-åriga födelsedagsbarnet"/>
+              <div
+                className="photo-placeholder"
+                role="img"
+                aria-label="Platshållare för ett foto på det 6-åriga födelsedagsbarnet"
+              >
+                <img
+                  src={johnImage}
+                  alt="John, det 6-åriga födelsedagsbarnet"
+                />
               </div>
             </article>
 
-            {details.map((detail) => (
-              <article className="panel" key={detail.label}>
-                <span className="panel-label">{detail.label}</span>
-                <p>{detail.value}</p>
-              </article>
-            ))}
+            <article className="panel">
+              <span className="panel-label">Plats</span>
+              <p>Smörsoppsvägen 19</p>
+            </article>
+            <article className="panel">
+              <span className="panel-label">Tid</span>
+              <p>10:00-12:00</p>
+            </article>
+            <article className="panel">
+              <span className="panel-label">Bjuds på</span>
+              <p>Pannkaka och fika</p>
+            </article>
+            <article className="panel">
+              <span className="panel-label">OSA</span>
+              <p>
+                Före 22/4 <br />
+                Till Rosalie: <a href="tel:0762434451">076 - 243 44 51</a>
+              </p>
+            </article>
           </div>
         </section>
 
         <section className="closing-note" aria-label="Inbjudans sidfot">
           <p>Ses på kalaset</p>
           <span>
-            Plats: Smörsoppsvägen 19. Tid: 10:00-12:00. Det bjuds på pannkaka
-            och fika.
+            Plats: Smörsoppsvägen 19. Datum: 25/4. Tid: 10:00-12:00. Det bjuds
+            på pannkaka och fika.
           </span>
         </section>
 
         <section className="panel panel-lever" aria-label="Minecraft-spak">
           <div className="lever-copy">
-            <span className="panel-label">Dra INTE i spaken!</span>
+            <span className="panel-label">
+              Dra <strong>INTE</strong> i spaken!
+            </span>
           </div>
 
           <button
             type="button"
-            className={`lever-button${leverEnabled ? ' is-on' : ''}`}
+            className={`lever-button${leverEnabled ? " is-on" : ""}`}
             aria-pressed={leverEnabled}
-            aria-label={isDetonated ? 'Spaken ar ur funktion efter explosionen' : leverEnabled ? 'Stang av spaken' : 'Sla pa spaken'}
+            aria-label={
+              isDetonated
+                ? "Spaken ar ur funktion efter explosionen"
+                : leverEnabled
+                  ? "Stang av spaken"
+                  : "Sla pa spaken"
+            }
             disabled={isDetonated}
             onClick={() => setLeverEnabled((current) => !current)}
           >
@@ -284,7 +319,7 @@ function App() {
         </section>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

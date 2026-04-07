@@ -1,36 +1,42 @@
 @font-face {
-  font-family: 'Minecraft';
-  src: url('./assets/MinecraftRegular-Bmg3.otf') format('opentype');
+  font-family: "Minecraft";
+  src: url("./assets/MinecraftRegular-Bmg3.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Minecraft';
-  src: url('./assets/MinecraftItalic-R8Mo.otf') format('opentype');
+  font-family: "Minecraft";
+  src: url("./assets/MinecraftItalic-R8Mo.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Minecraft';
-  src: url('./assets/MinecraftBold-nMK1.otf') format('opentype');
+  font-family: "Minecraft";
+  src: url("./assets/MinecraftBold-nMK1.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Minecraft';
-  src: url('./assets/MinecraftBoldItalic-1y1e.otf') format('opentype');
+  font-family: "Minecraft";
+  src: url("./assets/MinecraftBoldItalic-1y1e.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
 }
 
 :root {
   color: #10220c;
-  background: linear-gradient(180deg, #7bd3ff 0%, #8dd8fb 44%, #7ec850 44%, #5ea63a 100%);
+  background: linear-gradient(
+    180deg,
+    #7bd3ff 0%,
+    #8dd8fb 44%,
+    #7ec850 44%,
+    #5ea63a 100%
+  );
   color-scheme: light;
-  font-family: 'Minecraft', 'Trebuchet MS', Verdana, sans-serif;
+  font-family: "Minecraft", "Trebuchet MS", Verdana, sans-serif;
   font-synthesis: none;
   line-height: 1.5;
   font-weight: 400;
@@ -47,7 +53,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  
+
   perspective: 1000px;
 }
 
@@ -69,7 +75,11 @@ select {
   padding: 32px;
   isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 30%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0) 30%
+    ),
     repeating-linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.03) 0,
@@ -88,7 +98,7 @@ select {
 
 .page-shell::before,
 .page-shell::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -18vmax;
   opacity: 0;
@@ -98,17 +108,42 @@ select {
 
 .page-shell::before {
   background:
-    radial-gradient(circle at center, rgba(255, 249, 214, 0.96) 0 7%, rgba(255, 212, 97, 0.92) 7% 14%, rgba(255, 145, 44, 0.86) 14% 22%, rgba(178, 65, 16, 0.68) 22% 32%, rgba(59, 18, 4, 0) 32% 100%),
-    repeating-conic-gradient(from 0deg, rgba(255, 235, 153, 0.38) 0deg 8deg, rgba(255, 235, 153, 0) 8deg 18deg);
+    radial-gradient(
+      circle at center,
+      rgba(255, 249, 214, 0.96) 0 7%,
+      rgba(255, 212, 97, 0.92) 7% 14%,
+      rgba(255, 145, 44, 0.86) 14% 22%,
+      rgba(178, 65, 16, 0.68) 22% 32%,
+      rgba(59, 18, 4, 0) 32% 100%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255, 235, 153, 0.38) 0deg 8deg,
+      rgba(255, 235, 153, 0) 8deg 18deg
+    );
   transform: scale(0.08);
 }
 
 .page-shell::after {
   inset: -10vmax;
   background:
-    radial-gradient(circle at center, rgba(59, 22, 6, 0) 0 18%, rgba(59, 22, 6, 0.44) 18% 26%, rgba(40, 14, 4, 0.28) 26% 34%, rgba(40, 14, 4, 0) 34% 100%),
-    repeating-linear-gradient(0deg, rgba(255, 221, 124, 0.28) 0 12px, rgba(255, 221, 124, 0) 12px 28px),
-    repeating-linear-gradient(90deg, rgba(255, 176, 69, 0.24) 0 12px, rgba(255, 176, 69, 0) 12px 28px);
+    radial-gradient(
+      circle at center,
+      rgba(59, 22, 6, 0) 0 18%,
+      rgba(59, 22, 6, 0.44) 18% 26%,
+      rgba(40, 14, 4, 0.28) 26% 34%,
+      rgba(40, 14, 4, 0) 34% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 221, 124, 0.28) 0 12px,
+      rgba(255, 221, 124, 0) 12px 28px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 176, 69, 0.24) 0 12px,
+      rgba(255, 176, 69, 0) 12px 28px
+    );
   transform: scale(0.22);
 }
 
@@ -137,14 +172,19 @@ select {
   --right-hidden-x: -130px;
   --right-visible-x: 16px;
   --edge-offset: -28px;
-  transform: translate(var(--hidden-x), var(--hidden-y)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  transform: translate(var(--hidden-x), var(--hidden-y))
+    rotate(var(--peek-rotation)) scale(var(--peek-scale));
   transform-origin: center bottom;
   animation: peek-cycle 9s ease-in-out infinite;
 }
 
-.page-shell.creeper-phase-detonated {
+.page-shell.creeper-phase-exploding {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 30%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0) 30%
+    ),
     repeating-linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.03) 0,
@@ -161,104 +201,148 @@ select {
     );
 }
 
-.page-shell.creeper-phase-detonated::before,
-.page-shell.creeper-phase-detonated::after {
+.page-shell.creeper-phase-exploding::before,
+.page-shell.creeper-phase-exploding::after {
   opacity: 1;
 }
 
-.page-shell.creeper-phase-detonated::before {
+.page-shell.creeper-phase-exploding::before {
   inset: -12vmax;
   background:
-    radial-gradient(circle at 18% 74%, rgba(55, 58, 61, 0.34) 0 9%, rgba(55, 58, 61, 0.16) 9% 15%, rgba(55, 58, 61, 0) 15% 100%),
-    radial-gradient(circle at 64% 28%, rgba(62, 66, 70, 0.28) 0 8%, rgba(62, 66, 70, 0.14) 8% 14%, rgba(62, 66, 70, 0) 14% 100%),
-    radial-gradient(circle at 82% 66%, rgba(43, 46, 49, 0.26) 0 10%, rgba(43, 46, 49, 0.12) 10% 16%, rgba(43, 46, 49, 0) 16% 100%),
-    radial-gradient(circle at 42% 50%, rgba(33, 36, 39, 0.2) 0 12%, rgba(33, 36, 39, 0) 12% 100%);
+    radial-gradient(
+      circle at 18% 74%,
+      rgba(55, 58, 61, 0.34) 0 9%,
+      rgba(55, 58, 61, 0.16) 9% 15%,
+      rgba(55, 58, 61, 0) 15% 100%
+    ),
+    radial-gradient(
+      circle at 64% 28%,
+      rgba(62, 66, 70, 0.28) 0 8%,
+      rgba(62, 66, 70, 0.14) 8% 14%,
+      rgba(62, 66, 70, 0) 14% 100%
+    ),
+    radial-gradient(
+      circle at 82% 66%,
+      rgba(43, 46, 49, 0.26) 0 10%,
+      rgba(43, 46, 49, 0.12) 10% 16%,
+      rgba(43, 46, 49, 0) 16% 100%
+    ),
+    radial-gradient(
+      circle at 42% 50%,
+      rgba(33, 36, 39, 0.2) 0 12%,
+      rgba(33, 36, 39, 0) 12% 100%
+    );
   mix-blend-mode: multiply;
   animation: detonation-smoke-drift 18s ease-in-out infinite alternate;
 }
 
-.page-shell.creeper-phase-detonated::after {
+.page-shell.creeper-phase-exploding::after {
   inset: 0;
   background:
-    radial-gradient(circle at 48% 46%, rgba(18, 20, 22, 0.2) 0 16%, rgba(18, 20, 22, 0.08) 16% 23%, rgba(18, 20, 22, 0) 23% 100%),
-    radial-gradient(circle at 28% 22%, rgba(85, 88, 92, 0.18) 0 7%, rgba(85, 88, 92, 0) 7% 100%),
-    radial-gradient(circle at 74% 18%, rgba(75, 79, 83, 0.16) 0 6%, rgba(75, 79, 83, 0) 6% 100%),
-    radial-gradient(circle at 66% 78%, rgba(55, 59, 62, 0.14) 0 8%, rgba(55, 59, 62, 0) 8% 100%);
+    radial-gradient(
+      circle at 48% 46%,
+      rgba(18, 20, 22, 0.2) 0 16%,
+      rgba(18, 20, 22, 0.08) 16% 23%,
+      rgba(18, 20, 22, 0) 23% 100%
+    ),
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(85, 88, 92, 0.18) 0 7%,
+      rgba(85, 88, 92, 0) 7% 100%
+    ),
+    radial-gradient(
+      circle at 74% 18%,
+      rgba(75, 79, 83, 0.16) 0 6%,
+      rgba(75, 79, 83, 0) 6% 100%
+    ),
+    radial-gradient(
+      circle at 66% 78%,
+      rgba(55, 59, 62, 0.14) 0 8%,
+      rgba(55, 59, 62, 0) 8% 100%
+    );
   mix-blend-mode: screen;
   animation: detonation-smoke-haze 14s ease-in-out infinite alternate;
 }
 
-.page-shell.creeper-phase-detonated .mob {
+.page-shell.creeper-phase-exploding .mob {
   animation: none;
 }
 
-.page-shell.creeper-phase-detonated .mob-layer {
+.page-shell.creeper-phase-exploding .mob-layer {
   opacity: 0.22;
 }
 
-.page-shell.creeper-phase-detonated .sky-grid,
-.page-shell.creeper-phase-detonated .cloud {
+.page-shell.creeper-phase-exploding .sky-grid,
+.page-shell.creeper-phase-exploding .cloud {
   opacity: 0.18;
 }
 
-.page-shell.creeper-phase-detonated .hero-row,
-.page-shell.creeper-phase-detonated .content-grid,
-.page-shell.creeper-phase-detonated .details-grid,
-.page-shell.creeper-phase-detonated .closing-note,
-.page-shell.creeper-phase-detonated .panel-lever,
-.page-shell.creeper-phase-detonated .panel,
-.page-shell.creeper-phase-detonated #creeper {
+.page-shell.creeper-phase-exploding .hero-row,
+.page-shell.creeper-phase-exploding .content-grid,
+.page-shell.creeper-phase-exploding .details-grid,
+.page-shell.creeper-phase-exploding .closing-note,
+.page-shell.creeper-phase-exploding .panel-lever,
+.page-shell.creeper-phase-exploding .panel,
+.page-shell.creeper-phase-exploding #creeper {
   animation-fill-mode: both;
 }
 
-.page-shell.creeper-phase-detonated .hero-row {
+.page-shell.creeper-phase-exploding .hero-row {
   transform-origin: top center;
   animation: detonation-scene-hero 950ms cubic-bezier(0.24, 0.86, 0.22, 1) both;
 }
 
-.page-shell.creeper-phase-detonated .content-grid {
+.page-shell.creeper-phase-exploding .content-grid {
   transform-origin: top center;
-  animation: detonation-scene-content 1050ms cubic-bezier(0.24, 0.86, 0.22, 1) both;
+  animation: detonation-scene-content 1050ms cubic-bezier(0.24, 0.86, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .details-grid {
+.page-shell.creeper-phase-exploding .details-grid {
   transform-origin: top center;
-  animation: detonation-scene-details 1080ms cubic-bezier(0.24, 0.86, 0.22, 1) both;
+  animation: detonation-scene-details 1080ms cubic-bezier(0.24, 0.86, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .closing-note {
+.page-shell.creeper-phase-exploding .closing-note {
   transform-origin: left top;
-  animation: detonation-scene-closing 980ms cubic-bezier(0.24, 0.86, 0.22, 1) both;
+  animation: detonation-scene-closing 980ms cubic-bezier(0.24, 0.86, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .panel-lever {
+.page-shell.creeper-phase-exploding .panel-lever {
   transform-origin: right top;
-  animation: detonation-scene-lever 1100ms cubic-bezier(0.24, 0.86, 0.22, 1) both;
+  animation: detonation-scene-lever 1100ms cubic-bezier(0.24, 0.86, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .panel-featured {
+.page-shell.creeper-phase-exploding .panel-featured {
   transform-origin: top left;
   animation: detonation-panel-left 1000ms cubic-bezier(0.18, 0.82, 0.22, 1) both;
 }
 
-.page-shell.creeper-phase-detonated .details-grid > :nth-child(1) {
+.page-shell.creeper-phase-exploding .details-grid > :nth-child(1) {
   transform-origin: top right;
-  animation: detonation-panel-photo 1090ms cubic-bezier(0.18, 0.82, 0.22, 1) both;
+  animation: detonation-panel-photo 1090ms cubic-bezier(0.18, 0.82, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .details-grid > :nth-child(2) {
+.page-shell.creeper-phase-exploding .details-grid > :nth-child(2) {
   transform-origin: top left;
-  animation: detonation-panel-right-top 1020ms cubic-bezier(0.18, 0.82, 0.22, 1) both;
+  animation: detonation-panel-right-top 1020ms cubic-bezier(0.18, 0.82, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .details-grid > :nth-child(3) {
+.page-shell.creeper-phase-exploding .details-grid > :nth-child(3) {
   transform-origin: top left;
-  animation: detonation-panel-right-mid 1120ms cubic-bezier(0.18, 0.82, 0.22, 1) both;
+  animation: detonation-panel-right-mid 1120ms cubic-bezier(0.18, 0.82, 0.22, 1)
+    both;
 }
 
-.page-shell.creeper-phase-detonated .details-grid > :nth-child(4) {
+.page-shell.creeper-phase-exploding .details-grid > :nth-child(4) {
   transform-origin: top right;
-  animation: detonation-panel-right-bottom 1180ms cubic-bezier(0.18, 0.82, 0.22, 1) both;
+  animation: detonation-panel-right-bottom 1180ms
+    cubic-bezier(0.18, 0.82, 0.22, 1) both;
 }
 
 .mob-side-left {
@@ -327,7 +411,9 @@ select {
 
 .mob-chicken .mob-head {
   background: #fffef3;
-  box-shadow: inset 0 0 0 6px #d9d3bc, 0 12px 0 rgba(41, 74, 20, 0.28);
+  box-shadow:
+    inset 0 0 0 6px #d9d3bc,
+    0 12px 0 rgba(41, 74, 20, 0.28);
 }
 
 .mob-chicken .mob-eye {
@@ -366,7 +452,9 @@ select {
 
 .mob-pig .mob-head {
   background: #f2a6b6;
-  box-shadow: inset 0 0 0 6px #cb7d90, 0 12px 0 rgba(41, 74, 20, 0.28);
+  box-shadow:
+    inset 0 0 0 6px #cb7d90,
+    0 12px 0 rgba(41, 74, 20, 0.28);
 }
 
 .mob-pig .mob-ear {
@@ -434,7 +522,9 @@ select {
   right: 12px;
   height: 112px;
   background: #c89a77;
-  box-shadow: inset 0 0 0 6px #9a6e4f, 0 12px 0 rgba(41, 74, 20, 0.28);
+  box-shadow:
+    inset 0 0 0 6px #9a6e4f,
+    0 12px 0 rgba(41, 74, 20, 0.28);
 }
 
 .mob-villager .mob-brow {
@@ -509,58 +599,92 @@ select {
   border: 6px solid #1b3810;
   border-radius: 0;
   background:
-    linear-gradient(180deg, rgba(223, 246, 194, 0.96), rgba(188, 222, 144, 0.96)),
+    linear-gradient(
+      180deg,
+      rgba(223, 246, 194, 0.96),
+      rgba(188, 222, 144, 0.96)
+    ),
     #b9d779;
-  box-shadow: 0 0 0 6px #427124, 0 22px 0 rgba(37, 71, 18, 0.42);
+  box-shadow:
+    0 0 0 6px #427124,
+    0 22px 0 rgba(37, 71, 18, 0.42);
 }
 
-.page-shell.creeper-phase-detonated .invitation-card {
+.page-shell.creeper-phase-exploding .invitation-card {
   background:
     linear-gradient(180deg, rgba(154, 132, 103, 0.93), rgba(99, 83, 61, 0.96)),
     #756148;
   border-color: #302116;
   transform-origin: center top;
-  animation: detonation-card-collapse 1100ms cubic-bezier(0.22, 0.88, 0.2, 1) both;
+  animation: detonation-card-collapse 1100ms cubic-bezier(0.22, 0.88, 0.2, 1)
+    both;
   box-shadow:
     0 0 0 6px #4c3523,
     0 22px 0 rgba(22, 13, 8, 0.5),
     inset 0 0 0 4px rgba(31, 20, 11, 0.28);
 }
 
-.page-shell.creeper-phase-detonated .invitation-card::before,
-.page-shell.creeper-phase-detonated .invitation-card::after {
-  content: '';
+.page-shell.creeper-phase-exploding .invitation-card::before,
+.page-shell.creeper-phase-exploding .invitation-card::after {
+  content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.page-shell.creeper-phase-detonated .invitation-card::before {
+.page-shell.creeper-phase-exploding .invitation-card::before {
   background:
-    linear-gradient(131deg, rgba(0, 0, 0, 0) 0 21%, rgba(39, 24, 12, 0.7) 21% 22.4%, rgba(0, 0, 0, 0) 22.4% 100%),
-    linear-gradient(58deg, rgba(0, 0, 0, 0) 0 67%, rgba(55, 35, 19, 0.6) 67% 68.2%, rgba(0, 0, 0, 0) 68.2% 100%),
-    linear-gradient(15deg, rgba(0, 0, 0, 0) 0 49%, rgba(39, 24, 12, 0.48) 49% 50.1%, rgba(0, 0, 0, 0) 50.1% 100%);
+    linear-gradient(
+      131deg,
+      rgba(0, 0, 0, 0) 0 21%,
+      rgba(39, 24, 12, 0.7) 21% 22.4%,
+      rgba(0, 0, 0, 0) 22.4% 100%
+    ),
+    linear-gradient(
+      58deg,
+      rgba(0, 0, 0, 0) 0 67%,
+      rgba(55, 35, 19, 0.6) 67% 68.2%,
+      rgba(0, 0, 0, 0) 68.2% 100%
+    ),
+    linear-gradient(
+      15deg,
+      rgba(0, 0, 0, 0) 0 49%,
+      rgba(39, 24, 12, 0.48) 49% 50.1%,
+      rgba(0, 0, 0, 0) 50.1% 100%
+    );
 }
 
-.page-shell.creeper-phase-detonated .invitation-card::after {
+.page-shell.creeper-phase-exploding .invitation-card::after {
   background:
-    radial-gradient(circle at 18% 14%, rgba(30, 18, 10, 0.7) 0 24px, rgba(30, 18, 10, 0) 24px 100%),
-    radial-gradient(circle at 82% 26%, rgba(30, 18, 10, 0.54) 0 20px, rgba(30, 18, 10, 0) 20px 100%),
-    radial-gradient(circle at 62% 78%, rgba(30, 18, 10, 0.46) 0 28px, rgba(30, 18, 10, 0) 28px 100%);
+    radial-gradient(
+      circle at 18% 14%,
+      rgba(30, 18, 10, 0.7) 0 24px,
+      rgba(30, 18, 10, 0) 24px 100%
+    ),
+    radial-gradient(
+      circle at 82% 26%,
+      rgba(30, 18, 10, 0.54) 0 20px,
+      rgba(30, 18, 10, 0) 20px 100%
+    ),
+    radial-gradient(
+      circle at 62% 78%,
+      rgba(30, 18, 10, 0.46) 0 28px,
+      rgba(30, 18, 10, 0) 28px 100%
+    );
   mix-blend-mode: multiply;
 }
 
-.page-shell.creeper-phase-detonated .panel {
+.page-shell.creeper-phase-exploding .panel {
   background: rgba(144, 125, 99, 0.84);
   border-color: #4b3522;
   box-shadow: inset 0 0 0 4px rgba(70, 49, 31, 0.44);
 }
 
-.page-shell.creeper-phase-detonated .panel-featured {
+.page-shell.creeper-phase-exploding .panel-featured {
   background: linear-gradient(180deg, #5d4228, #3b2918);
 }
 
-.page-shell.creeper-phase-detonated .photo-placeholder {
+.page-shell.creeper-phase-exploding .photo-placeholder {
   border-color: #4b3522;
   background:
     linear-gradient(45deg, rgba(57, 40, 24, 0.28) 25%, transparent 25%),
@@ -570,12 +694,12 @@ select {
     #9c8463;
 }
 
-.page-shell.creeper-phase-detonated .lever-button {
+.page-shell.creeper-phase-exploding .lever-button {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.page-shell.creeper-phase-detonated #creeper {
+.page-shell.creeper-phase-exploding #creeper {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -613,7 +737,7 @@ h1 {
   margin: 18px 0 20px;
   max-width: 11ch;
   color: #13280d;
-  font-family: 'Minecraft', 'Trebuchet MS', Verdana, sans-serif;
+  font-family: "Minecraft", "Trebuchet MS", Verdana, sans-serif;
   font-size: clamp(3rem, 8vw, 5.3rem);
   line-height: 0.92;
   font-weight: 700;
@@ -633,15 +757,6 @@ h1 {
   grid-template-columns: minmax(0, 1fr) 220px;
   gap: 24px;
   align-items: end;
-}
- #creeper {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  opacity: 1;
-  z-index: 1;
-  transform: translate(-50%, -50%) rotateY(45deg);
-  transform-style: preserve-3d;
 }
 
 .content-grid {
@@ -703,7 +818,11 @@ h1 {
     linear-gradient(-45deg, transparent 75%, rgba(61, 114, 36, 0.24) 75%),
     #d8f0ba;
   background-size: 32px 32px;
-  background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+  background-position:
+    0 0,
+    0 16px,
+    16px -16px,
+    -16px 0;
   border: 4px dashed #3b6c21;
   text-align: center;
 }
@@ -719,14 +838,17 @@ h1 {
 }
 
 .panel-featured ul {
-  margin: 24px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.panel-featured li:not(:first-child) {
+  border-top: 1px solid rgba(248, 239, 228, 0.18);
+}
+
 .panel-featured li {
   padding: 10px 0;
-  border-top: 1px solid rgba(248, 239, 228, 0.18);
 }
 
 .closing-note {
@@ -764,8 +886,13 @@ h1 {
   max-width: 34rem;
 }
 
-.lever-copy p {
+.lever-copy .panel-label {
   color: #173712;
+  font-size: 2rem !important;
+
+  strong {
+    text-decoration: underline;
+  }
 }
 
 .lever-button {
@@ -776,7 +903,9 @@ h1 {
   background: transparent;
   box-shadow: none;
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
 }
 
 .lever-button:hover {
@@ -825,8 +954,13 @@ h1 {
   bottom: 0;
   width: 24px;
   height: 54px;
-  background:
-    linear-gradient(180deg, #8d8d8d, #646464 40%, #7c7c7c 40%, #5b5b5b 100%);
+  background: linear-gradient(
+    180deg,
+    #8d8d8d,
+    #646464 40%,
+    #7c7c7c 40%,
+    #5b5b5b 100%
+  );
   box-shadow:
     inset 6px 0 0 #9d9d9d,
     inset -6px 0 0 #4f4f4f,
@@ -841,7 +975,9 @@ h1 {
   width: 16px;
   height: 58px;
   background: linear-gradient(180deg, #9a7740, #6f5327);
-  box-shadow: inset 4px 0 0 #b08b4c, inset -4px 0 0 #5e431d;
+  box-shadow:
+    inset 4px 0 0 #b08b4c,
+    inset -4px 0 0 #5e431d;
   transform-origin: 50% 100%;
   transform: translateX(-50%) rotate(-58deg);
   transition: transform 160ms steps(2, end);
@@ -854,7 +990,9 @@ h1 {
   width: 20px;
   height: 18px;
   background: linear-gradient(180deg, #a2a2a2, #7b7b7b);
-  box-shadow: inset 4px 0 0 #b7b7b7, inset -4px 0 0 #666;
+  box-shadow:
+    inset 4px 0 0 #b7b7b7,
+    inset -4px 0 0 #666;
 }
 
 .lever-button.is-on .lever-arm {
@@ -866,24 +1004,35 @@ h1 {
 }
 
 @keyframes peek-cycle {
-  0%, 12%, 100% {
-    transform: translate(var(--hidden-x), var(--hidden-y)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  0%,
+  12%,
+  100% {
+    transform: translate(var(--hidden-x), var(--hidden-y))
+      rotate(var(--peek-rotation)) scale(var(--peek-scale));
   }
 
-  20%, 30% {
-    transform: translate(var(--visible-x), calc(var(--visible-y) + 6px)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  20%,
+  30% {
+    transform: translate(var(--visible-x), calc(var(--visible-y) + 6px))
+      rotate(var(--peek-rotation)) scale(var(--peek-scale));
   }
 
-  36%, 62% {
-    transform: translate(var(--visible-x), var(--visible-y)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  36%,
+  62% {
+    transform: translate(var(--visible-x), var(--visible-y))
+      rotate(var(--peek-rotation)) scale(var(--peek-scale));
   }
 
-  70%, 80% {
-    transform: translate(var(--visible-x), calc(var(--visible-y) + 4px)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  70%,
+  80% {
+    transform: translate(var(--visible-x), calc(var(--visible-y) + 4px))
+      rotate(var(--peek-rotation)) scale(var(--peek-scale));
   }
 
-  88%, 96% {
-    transform: translate(var(--hidden-x), var(--hidden-y)) rotate(var(--peek-rotation)) scale(var(--peek-scale));
+  88%,
+  96% {
+    transform: translate(var(--hidden-x), var(--hidden-y))
+      rotate(var(--peek-rotation)) scale(var(--peek-scale));
   }
 }
 
@@ -925,7 +1074,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-
   .content-grid,
   .details-grid,
   .closing-note,
@@ -944,8 +1092,6 @@ h1 {
   }
 }
 
-
-
 #creeper {
   --box: 2vmin;
   --color0: #0000;
@@ -957,38 +1103,78 @@ h1 {
   --color6: #4f9351;
   --color7: #5ae143;
   --color8: #ded;
-  --pos1x:  0; --pos1y:  4; --size1x:  3; --size1y:  4;
-  --pos2x:  1; --pos2y: -2; --size2x:  3; --size2y:  3;
-  --pos3x:  2; --pos3y:  1; --size3x:  3; --size3y:  4;
-  --pos4x:  3; --pos4y:  2; --size4x:  4; --size4y:  3;
-  --pos5x:  0; --pos5y:  2; --size5x:  2; --size5y:  3;
-  --pos6x:  1; --pos6y: -3; --size6x:  3; --size6y:  2;
-  --pos7x:  2; --pos7y:  3; --size7x:  2; --size7y:  1;
-  --pos8x:  3; --pos8y:  0; --size8x:  1; --size8y:  2;
+  --pos1x: 0;
+  --pos1y: 4;
+  --size1x: 3;
+  --size1y: 4;
+  --pos2x: 1;
+  --pos2y: -2;
+  --size2x: 3;
+  --size2y: 3;
+  --pos3x: 2;
+  --pos3y: 1;
+  --size3x: 3;
+  --size3y: 4;
+  --pos4x: 3;
+  --pos4y: 2;
+  --size4x: 4;
+  --size4y: 3;
+  --pos5x: 0;
+  --pos5y: 2;
+  --size5x: 2;
+  --size5y: 3;
+  --pos6x: 1;
+  --pos6y: -3;
+  --size6x: 3;
+  --size6y: 2;
+  --pos7x: 2;
+  --pos7y: 3;
+  --size7x: 2;
+  --size7y: 1;
+  --pos8x: 3;
+  --pos8y: 0;
+  --size8x: 1;
+  --size8y: 2;
   --bg:
-    conic-gradient(at calc(100% - var(--box)) var(--box), var(--color1) 25%, #0000 0) calc(var(--pos1x) * var(--box)) calc(var(--pos1y) * var(--box)) / calc(var(--size1x) * var(--box)) calc(var(--size1y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color2) 0) calc(var(--pos2x) * var(--box)) calc(var(--pos2y) * var(--box)) / calc(var(--size2x) * var(--box)) calc(var(--size2y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color3) 0) calc(var(--pos3x) * var(--box)) calc(var(--pos3y) * var(--box)) / calc(var(--size3x) * var(--box)) calc(var(--size3y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color4) 0) calc(var(--pos4x) * var(--box)) calc(var(--pos4y) * var(--box)) / calc(var(--size4x) * var(--box)) calc(var(--size4y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color5) 0) calc(var(--pos5x) * var(--box)) calc(var(--pos5y) * var(--box)) / calc(var(--size5x) * var(--box)) calc(var(--size5y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color6) 0) calc(var(--pos6x) * var(--box)) calc(var(--pos6y) * var(--box)) / calc(var(--size6x) * var(--box)) calc(var(--size6y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color7) 0) calc(var(--pos7x) * var(--box)) calc(var(--pos7y) * var(--box)) / calc(var(--size7x) * var(--box)) calc(var(--size7y) * var(--box)),
-    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color8) 0) calc(var(--pos8x) * var(--box)) calc(var(--pos8y) * var(--box)) / calc(var(--size8x) * var(--box)) calc(var(--size8y) * var(--box)),
-    var(--color1)
-    ;
+    conic-gradient(
+        at calc(100% - var(--box)) var(--box),
+        var(--color1) 25%,
+        #0000 0
+      )
+      calc(var(--pos1x) * var(--box)) calc(var(--pos1y) * var(--box)) /
+      calc(var(--size1x) * var(--box)) calc(var(--size1y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color2) 0)
+      calc(var(--pos2x) * var(--box)) calc(var(--pos2y) * var(--box)) /
+      calc(var(--size2x) * var(--box)) calc(var(--size2y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color3) 0)
+      calc(var(--pos3x) * var(--box)) calc(var(--pos3y) * var(--box)) /
+      calc(var(--size3x) * var(--box)) calc(var(--size3y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color4) 0)
+      calc(var(--pos4x) * var(--box)) calc(var(--pos4y) * var(--box)) /
+      calc(var(--size4x) * var(--box)) calc(var(--size4y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color5) 0)
+      calc(var(--pos5x) * var(--box)) calc(var(--pos5y) * var(--box)) /
+      calc(var(--size5x) * var(--box)) calc(var(--size5y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color6) 0)
+      calc(var(--pos6x) * var(--box)) calc(var(--pos6y) * var(--box)) /
+      calc(var(--size6x) * var(--box)) calc(var(--size6y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color7) 0)
+      calc(var(--pos7x) * var(--box)) calc(var(--pos7y) * var(--box)) /
+      calc(var(--size7x) * var(--box)) calc(var(--size7y) * var(--box)),
+    conic-gradient(at var(--box) var(--box), #0000 75%, var(--color8) 0)
+      calc(var(--pos8x) * var(--box)) calc(var(--pos8y) * var(--box)) /
+      calc(var(--size8x) * var(--box)) calc(var(--size8y) * var(--box)),
+    var(--color1);
   height: calc(30 * var(--box));
   width: calc(8 * var(--box));
   position: fixed;
-  top: 50%;
+  bottom: 25vh;
   left: -25%;
+  opacity: 1;
+  z-index: 10;
   transform: translate(-50%, -50%) rotateY(45deg);
   transform-style: preserve-3d;
 }
-
-
-
-
-
 
 /* head */
 
@@ -997,13 +1183,17 @@ h1 {
   height: calc(8 * var(--box));
   transform: translate3d(0, 0, calc(4 * var(--box)));
   background:
-    linear-gradient(#000 0 0) calc(var(--box) * 1) calc(var(--box) * 2) / calc(var(--box) * 2) calc(var(--box) * 2) no-repeat,
-    linear-gradient(#000 0 0) calc(var(--box) * 5) calc(var(--box) * 2) / calc(var(--box) * 2) calc(var(--box) * 2) no-repeat,
-    linear-gradient(#000 0 0) calc(var(--box) * 3) calc(var(--box) * 4) / calc(var(--box) * 2) calc(var(--box) * 3) no-repeat,
-    linear-gradient(#000 0 0) calc(var(--box) * 2) calc(var(--box) * 5) / calc(var(--box) * 1) calc(var(--box) * 3) no-repeat,
-    linear-gradient(#000 0 0) calc(var(--box) * 5) calc(var(--box) * 5) / calc(var(--box) * 1) calc(var(--box) * 3) no-repeat,
-    var(--bg)
-    ;
+    linear-gradient(#000 0 0) calc(var(--box) * 1) calc(var(--box) * 2) /
+      calc(var(--box) * 2) calc(var(--box) * 2) no-repeat,
+    linear-gradient(#000 0 0) calc(var(--box) * 5) calc(var(--box) * 2) /
+      calc(var(--box) * 2) calc(var(--box) * 2) no-repeat,
+    linear-gradient(#000 0 0) calc(var(--box) * 3) calc(var(--box) * 4) /
+      calc(var(--box) * 2) calc(var(--box) * 3) no-repeat,
+    linear-gradient(#000 0 0) calc(var(--box) * 2) calc(var(--box) * 5) /
+      calc(var(--box) * 1) calc(var(--box) * 3) no-repeat,
+    linear-gradient(#000 0 0) calc(var(--box) * 5) calc(var(--box) * 5) /
+      calc(var(--box) * 1) calc(var(--box) * 3) no-repeat,
+    var(--bg);
 }
 
 #creeper header::before {
@@ -1072,7 +1262,7 @@ h1 {
 
 /* feet */
 #creeper footer {
-  background: none;  
+  background: none;
   box-shadow: none;
 }
 
@@ -1122,7 +1312,6 @@ h1 {
   transform: rotateY(-90deg);
 }
 
-
 #creeper .foot:nth-child(1) {
   --r: rotateY(0);
   --z: 2;
@@ -1134,12 +1323,15 @@ h1 {
 #creeper .foot:nth-child(2) {
   --z: 2;
   --r: rotateY(0);
-/*   --pos1x: 3;
+  /*   --pos1x: 3;
   --pos1y: 0; */
   --size1x: 1;
   --size1y: 1;
   background: var(--bg);
-  background-position: calc(var(--box) * 1) calc(var(--box) * 3), calc(var(--box) * 3) calc(var(--box) * 3), calc(var(--box) * 2) calc(var(--box) * 1);
+  background-position:
+    calc(var(--box) * 1) calc(var(--box) * 3),
+    calc(var(--box) * 3) calc(var(--box) * 3),
+    calc(var(--box) * 2) calc(var(--box) * 1);
   animation: walk var(--time) linear infinite;
   animation-delay: calc(var(--time) / 2);
   transform-origin: 50% 0;
@@ -1170,9 +1362,9 @@ h1 {
 #creeper .foot:nth-child(3),
 #creeper .foot:nth-child(4) {
   background:
-    repeating-conic-gradient(#000 0 25%, #040 0 50%) 0 100% / calc(2 * var(--box)) calc(2 * var(--box)) repeat-x,
-    var(--bg)
-    ;
+    repeating-conic-gradient(#000 0 25%, #040 0 50%) 0 100% /
+      calc(2 * var(--box)) calc(2 * var(--box)) repeat-x,
+    var(--bg);
 }
 
 #creeper *,
@@ -1203,17 +1395,24 @@ h1 {
 }
 
 @keyframes walk {
-  0%, 100% { transform: translateZ(calc(var(--z) * var(--box))) var(--r)  rotateX(0deg) }
-  25% { transform: translateZ(calc(var(--z) * var(--box))) var(--r)  rotateX(10deg) }
-  75% { transform: translateZ(calc(var(--z) * var(--box))) var(--r) rotateX(-15deg) }
+  0%,
+  100% {
+    transform: translateZ(calc(var(--z) * var(--box))) var(--r) rotateX(0deg);
+  }
+  25% {
+    transform: translateZ(calc(var(--z) * var(--box))) var(--r) rotateX(10deg);
+  }
+  75% {
+    transform: translateZ(calc(var(--z) * var(--box))) var(--r) rotateX(-15deg);
+  }
 }
 
 #creeper.creeper-state-entering {
-  animation: creeper-placeholder-entering 4400ms linear;
+  animation: creeper-placeholder-entering 2500ms linear;
 }
 
 #creeper.creeper-state-loading {
-  animation: creeper-placeholder-loading 500ms steps(4, end) infinite;
+  animation: creeper-placeholder-loading 650ms steps(4, end) infinite;
 }
 
 #creeper.creeper-state-exploding {
@@ -1221,7 +1420,8 @@ h1 {
 }
 
 .page-shell.creeper-phase-exploding {
-  animation: page-placeholder-exploding 1300ms cubic-bezier(0.2, 0.7, 0.18, 1) both;
+  animation: page-placeholder-exploding 1300ms cubic-bezier(0.2, 0.7, 0.18, 1)
+    both;
 }
 
 .page-shell.creeper-phase-exploding::before {
