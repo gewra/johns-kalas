@@ -615,7 +615,7 @@ select {
     linear-gradient(180deg, rgba(154, 132, 103, 0.93), rgba(99, 83, 61, 0.96)),
     #756148;
   border-color: #302116;
-  transform-origin: center top;
+  transform-origin: center;
   animation: detonation-card-collapse 1100ms cubic-bezier(0.22, 0.88, 0.2, 1)
     both;
   box-shadow:
