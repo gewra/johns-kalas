@@ -405,7 +405,7 @@ select {
   --right-visible-x: 29px;
   --hidden-y: 60px;
   --visible-y: -15px;
-  animation-duration: 10s;
+  animation-duration: 5000ms;
   animation-delay: 0s;
 }
 
@@ -446,7 +446,7 @@ select {
   --right-visible-x: 12px;
   --hidden-y: 65px;
   --visible-y: -4px;
-  animation-duration: 11.5s;
+  animation-duration: 7500ms;
   animation-delay: 2.1s;
 }
 
@@ -512,7 +512,7 @@ select {
   --right-visible-x: 12px;
   --hidden-y: 63px;
   --visible-y: -4px;
-  animation-duration: 12s;
+  animation-duration: 6500ms;
   animation-delay: 4.4s;
 }
 

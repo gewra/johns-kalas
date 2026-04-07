@@ -11,17 +11,17 @@ const activities = [
 
 const mobConfigs = {
   chicken: {
-    duration: 10000,
+    duration: 5000,
     delay: 0,
     topRange: [10, 56],
   },
   pig: {
-    duration: 11500,
+    duration: 7500,
     delay: 2100,
     topRange: [42, 78],
   },
   villager: {
-    duration: 12000,
+    duration: 6500,
     delay: 4400,
     topRange: [18, 68],
   },
@@ -219,13 +219,10 @@ function App() {
       <main className="invitation-card">
         <div className="hero-row">
           <div>
-            <p className="kicker">Nytt uppdrag upplåst</p>
-            <p className="date-line">John fyller 6 år • 10:00-12:00</p>
             <h1>Välkommen {inviteeName} på Johns 6-årskalas!</h1>
             <p className="lede">
-              Packa pickaxen och kom till ett blockigt kalasäventyr. Det blir
-              pannkaka, fika och massor av Minecraft-stämning när vi firar att
-              John fyller sex.
+              Packa pickaxen och kom till ett blockigt minecraftkalas. Det blir
+              pannkaka, fika och lek!
             </p>
           </div>
         </div>
@@ -261,6 +258,7 @@ function App() {
             </article>
             <article className="panel">
               <span className="panel-label">Tid</span>
+              <p>Lördagen den 25/4</p>
               <p>10:00-12:00</p>
             </article>
             <article className="panel">
@@ -270,8 +268,12 @@ function App() {
             <article className="panel">
               <span className="panel-label">OSA</span>
               <p>
-                Före 22/4 <br />
+                Senast 22/4, meddela om du kommer och ev allergier
+                <br />
+                <br />
                 Till Rosalie: <a href="tel:0762434451">076 - 243 44 51</a>
+                <br />
+                Eller Gustaf: <a href="tel:0702791662">070 - 279 16 62</a>
               </p>
             </article>
           </div>
